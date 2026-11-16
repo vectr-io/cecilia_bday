@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cecilia – 1 Aninho 🦋</title>
+  <meta name="theme-color" content="#f8d7e6">
+
+  <!-- ============================================================
+       OPEN GRAPH (miniatura no WhatsApp)
+       ATENÇÃO: o og:image PRECISA ser uma URL absoluta e pública,
+       em JPG ou PNG (SVG não funciona no WhatsApp). Tamanho ideal: 1200x630.
+       Coloque a imagem na mesma pasta do index.html (ex.: og-image.jpg)
+       e troque SEUSITE.vercel.app pelo seu domínio real da Vercel.
+       ============================================================ -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="🦋 Cecilia faz 1 aninho! 🌸">
+  <meta property="og:description" content="Entre o voo das borboletas e o perfume das flores, nosso jardim ficou ainda mais mágico. Venha celebrar! 16 de Janeiro às 18:00.">
+  <meta property="og:image" content="https://SEUSITE.vercel.app/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://SEUSITE.vercel.app/">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Paleta ---------- */
+    :root {
+      --rosa: #f9d5e5;
+      --rosa-forte: #f3a8c8;
+      --lilas: #dcd0f5;
+      --lilas-forte: #b9a4e8;
+      --menta: #cdeee0;
+      --menta-forte: #8fd3b6;
+      --amarelo: #fff4c2;
+      --texto: #6b5876;
+      --texto-escuro: #4f3d5c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { min-height: 100%; }
+
+    /* Fundo externo (desktop) com gradiente animado bem lento */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--texto);
+      background: linear-gradient(135deg, #fde2ee, #e6dcf7, #d6f3e6, #fff6cc, #fde2ee);
+      background-size: 400% 400%;
+      animation: gradienteLento 40s ease infinite;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* "Tela de celular" centralizada.
+       FUNDO DO CANVA: coloque o arquivo "fundo.jpg" na mesma pasta do index.html.
+       Se o arquivo não existir, o gradiente pastel abaixo aparece no lugar. */
+    .app {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+      padding: 48px 24px 40px;
+      background:
+        url('fundo.jpg') center bottom / cover no-repeat,
+        linear-gradient(180deg, var(--rosa) 0%, var(--lilas) 45%, var(--menta) 80%, var(--amarelo) 100%);
+      box-shadow: 0 0 60px rgba(185, 164, 232, .35);
+    }
+
+    /* ---------- Elementos flutuantes (CSS puro) ---------- */
+    .flutuantes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .flutuantes span {
+      position: absolute;
+      bottom: -60px;
+      left: var(--x);
+      font-size: var(--s, 28px);
+      opacity: 0;
+      animation: subir var(--d) linear var(--delay) infinite;
+    }
+
+    /* ---------- Conteúdo ---------- */
+    .conteudo {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .topo { font-size: 38px; letter-spacing: 8px; animation: balancar 5s ease-in-out infinite; }
+
+    .sub {
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--texto-escuro);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+    }
+
+    .nome {
+      font-family: 'Great Vibes', cursive;
+      font-size: 88px;
+      line-height: 1;
+      color: var(--texto-escuro);
+      text-shadow: 0 3px 0 #fff, 0 6px 18px rgba(243, 168, 200, .55);
+      animation: brilho 6s ease-in-out infinite;
+    }
+
+    .idade {
+      display: inline-block;
+      padding: 10px 28px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .75);
+      border: 2px dashed var(--rosa-forte);
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--texto-escuro);
+      backdrop-filter: blur(4px);
+    }
+
+    .frase {
+      background: rgba(255, 255, 255, .72);
+      border-radius: 28px;
+      padding: 22px 20px;
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 400;
+      color: var(--texto-escuro);
+      box-shadow: 0 8px 24px rgba(185, 164, 232, .25);
+      backdrop-filter: blur(4px);
+    }
+
+    .data {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(255, 244, 194, .92), rgba(255, 233, 242, .92));
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(243, 168, 200, .3);
+    }
+    .data .dia { font-family: 'Great Vibes', cursive; font-size: 46px; color: var(--texto-escuro); line-height: 1.1; }
+    .data .hora { font-weight: 600; font-size: 20px; letter-spacing: 2px; color: var(--texto-escuro); margin-top: 4px; }
+
+    /* ---------- Botões ---------- */
+    .botoes { width: 100%; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 64px;
+      padding: 16px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--texto-escuro);
+      border: 2px solid rgba(255, 255, 255, .9);
+      box-shadow: 0 8px 20px rgba(185, 164, 232, .35);
+      transition: transform .2s ease, box-shadow .2s ease;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+    }
+    .btn:active { transform: scale(.97); box-shadow: 0 3px 10px rgba(185, 164, 232, .35); }
+    .btn:focus-visible { outline: 3px solid var(--lilas-forte); outline-offset: 3px; }
+    .btn .ico { font-size: 24px; }
+
+    .btn-mapa  { background: linear-gradient(135deg, var(--menta), var(--menta-forte)); }
+    .btn-vou   { background: linear-gradient(135deg, var(--rosa), var(--rosa-forte)); animation: pulsar 2.8s ease-in-out infinite; }
+    .btn-sobre { background: linear-gradient(135deg, var(--lilas), var(--lilas-forte)); }
+
+    .rodape { font-size: 28px; letter-spacing: 6px; margin-top: 8px; animation: balancar 6s ease-in-out infinite reverse; }
+
+    /* ============================================================
+       POP-UP "SOBRE MIM" (elemento <dialog> nativo)
+       ============================================================ */
+    dialog.sobre {
+      border: none;
+      padding: 0;
+      background: transparent;
+      width: min(88vw, 400px);
+      max-width: 400px;
+      margin: auto;
+      overflow: visible;
+    }
+    dialog.sobre::backdrop {
+      background: rgba(107, 88, 118, .45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    dialog.sobre[open] { animation: popIn .45s cubic-bezier(.2, .9, .3, 1.2); }
+    dialog.sobre[open]::backdrop { animation: fadeIn .35s ease; }
+
+    .sobre-card {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      border-radius: 34px;
+      padding: 44px 24px 30px;
+      background: linear-gradient(160deg, #fff7fb 0%, var(--rosa) 45%, var(--lilas) 100%);
+      border: 3px solid rgba(255, 255, 255, .95);
+      box-shadow: 0 20px 50px rgba(107, 88, 118, .35);
+    }
+
+    .sobre-titulo {
+      position: relative;
+      z-index: 2;
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: 6px;
+      color: var(--texto-escuro);
+      text-shadow: 0 2px 0 #fff;
+    }
+    .sobre-titulo small { display: block; font-size: 20px; letter-spacing: 8px; margin-bottom: 4px; }
+
+    .sobre-lista {
+      position: relative;
+      z-index: 2;
+      list-style: none;
+      margin-top: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .sobre-lista li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      padding: 14px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .8);
+      box-shadow: 0 6px 16px rgba(185, 164, 232, .25);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--texto-escuro);
+    }
+    .sobre-lista .ico { font-size: 34px; flex: none; }
+
+    .fechar {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
+      min-height: 52px;
+      padding: 12px 36px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+      background: linear-gradient(135deg, var(--menta), var(--menta-forte));
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--texto-escuro);
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(143, 211, 182, .5);
+    }
+    .fechar:focus-visible { outline: 3px solid var(--lilas-forte); outline-offset: 3px; }
+
+    /* Borboletas voando dentro do pop-up */
+    .borboletas { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .bf {
+      position: absolute;
+      top: var(--top);
+      left: -50px;
+      font-size: var(--s, 30px);
+      opacity: 0;
+      animation: voar var(--d) ease-in-out var(--delay) infinite;
+    }
+    .bf i {
+      display: inline-block;
+      font-style: normal;
+      animation: bater .32s ease-in-out infinite alternate;
+    }
+
+    /* ---------- Keyframes ---------- */
+    @keyframes gradienteLento {
+      0%, 100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+    @keyframes subir {
+      0%   { transform: translate3d(0, 0, 0) rotate(-8deg); opacity: 0; }
+      10%  { opacity: .85; }
+      30%  { transform: translate3d(28px, -30vh, 0) rotate(8deg); }
+      60%  { transform: translate3d(-28px, -65vh, 0) rotate(-8deg); }
+      90%  { opacity: .85; }
+      100% { transform: translate3d(14px, -115vh, 0) rotate(6deg); opacity: 0; }
+    }
+    @keyframes balancar {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50%      { transform: translateY(-6px) rotate(2deg); }
+    }
+    @keyframes brilho {
+      0%, 100% { filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0)); }
+      50%      { filter: drop-shadow(0 0 14px rgba(255, 255, 255, .95)); }
+    }
+    @keyframes pulsar {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.03); }
+    }
+    @keyframes popIn {
+      from { transform: scale(.7) translateY(30px); opacity: 0; }
+      to   { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Voo da borboleta: atravessa o card em zigue-zague */
+    @keyframes voar {
+      0%   { transform: translate(0, 0) rotate(8deg);        opacity: 0; }
+      8%   { opacity: .95; }
+      25%  { transform: translate(110px, -26px) rotate(-6deg); }
+      50%  { transform: translate(230px, 18px) rotate(10deg); }
+      75%  { transform: translate(330px, -22px) rotate(-8deg); }
+      92%  { opacity: .95; }
+      100% { transform: translate(440px, 6px) rotate(6deg);  opacity: 0; }
+    }
+    /* Bater de asas (simula o abre/fecha com escala horizontal) */
+    @keyframes bater {
+      from { transform: scaleX(1); }
+      to   { transform: scaleX(.35); }
+    }
+
+    /* Acessibilidade: respeita quem prefere menos movimento */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .flutuantes, .borboletas { display: none; }
+    }
+
+    @media (max-width: 360px) {
+      .nome { font-size: 72px; }
+      .btn { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+
+    <!-- Borboletas, passarinhos, flores e folhas flutuando (CSS puro) -->
+    <div class="flutuantes" aria-hidden="true">
+      <span style="--x:6%;  --d:20s; --delay:0s;   --s:30px;">🦋</span>
+      <span style="--x:20%; --d:26s; --delay:4s;   --s:24px;">🌸</span>
+      <span style="--x:34%; --d:23s; --delay:9s;   --s:28px;">🐦</span>
+      <span style="--x:48%; --d:28s; --delay:2s;   --s:26px;">🌼</span>
+      <span style="--x:60%; --d:21s; --delay:7s;   --s:32px;">🦋</span>
+      <span style="--x:72%; --d:25s; --delay:12s;  --s:24px;">🍃</span>
+      <span style="--x:84%; --d:22s; --delay:5s;   --s:28px;">🌷</span>
+      <span style="--x:92%; --d:27s; --delay:10s;  --s:26px;">🦋</span>
+      <span style="--x:14%; --d:30s; --delay:15s;  --s:24px;">🌺</span>
+      <span style="--x:66%; --d:24s; --delay:17s;  --s:28px;">🐦</span>
+    </div>
+
+    <div class="conteudo">
+      <div class="topo" aria-hidden="true">🌸🦋🌸</div>
+
+      <p class="sub">Você está convidado</p>
+
+      <h1 class="nome">Cecilia</h1>
+
+      <div class="idade">🌼 1 Aninho 🌼</div>
+
+      <p class="frase">
+        Entre o voo das borboletas e o perfume das flores, nosso jardim ficou ainda mais mágico. Venha celebrar o 1º aninho da Cecilia!
+      </p>
+
+      <section class="data" aria-label="Data e hora da festa">
+        <div class="dia">16 de Janeiro</div>
+        <div class="hora">às 18:00</div>
+      </section>
+
+      <nav class="botoes" aria-label="Ações do convite">
+
+        <!-- 1. COMO CHEGAR (Google Maps) -->
+        <a class="btn btn-mapa"
+           href="https://www.google.com/maps/place/R.+Esp%C3%ADrito+Santo,+1750+-+Casa+101+-+Cruzeiro,+Concei%C3%A7%C3%A3o+do+Araguaia+-+PA,+68540-000/data=!4m2!3m1!1s0x93208ec970338ca9:0x5053c81e4683d50f!18m1!1e1?entry=gps&amp;coh=192189&amp;g_ep=CAESBzI2LjQ2LjAYACCenQoqygEsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsMTAwODQwMDQ1LDk0MjA3Mzk0LDk0MjA3NTA2LDk0MjA4NTA2LDk0MjE4NjUzLDk0MjI5ODM5LDk0Mjc1MTY4LDEwMDg0ODEwMiwxMDA4MjUwMjUsMTAwODIwMjM3LDEwMDgyMjQ5NCwxMDA4Mjc5NzUsMTAwODM4MzU5LDEyMTgxNjQ2MSwxMDA4NDU5MzQsMTAwODQ3NDQ1QgJCUg%3D%3D&amp;skid=ba2598d3-ac2a-4326-9f9f-3e7786abec7a&amp;g_st=aw"
+           target="_blank" rel="noopener noreferrer">
+          <span class="ico" aria-hidden="true">📍</span> Como chegar
+        </a>
+
+        <!-- 2. EU VOU! (confirmação por WhatsApp) -->
+        <a class="btn btn-vou"
+           href="https://api.whatsapp.com/send/?phone=559484193891&amp;text=Ol%C3%A1%2C+confirmo+minha+presen%C3%A7a+na+festa+da+Cecilia%21&amp;type=phone_number&amp;app_absent=0"
+           target="_blank" rel="noopener noreferrer">
+          <span class="ico" aria-hidden="true">💌</span> Eu vou!
+        </a>
+
+        <!-- 3. SOBRE MIM → abre o pop-up com borboletas (sem link externo) -->
+        <button type="button" class="btn btn-sobre" id="abrirSobre" aria-haspopup="dialog">
+          <span class="ico" aria-hidden="true">🦋</span> Sobre mim
+        </button>
+
+      </nav>
+
+      <div class="rodape" aria-hidden="true">🌷🐦🌼🦋🌷</div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       POP-UP "SOBRE MIM"
+       Para editar os textos, altere apenas o conteúdo das <li> abaixo.
+       ============================================================ -->
+  <dialog class="sobre" id="popupSobre" aria-labelledby="sobreTitulo">
+    <div class="sobre-card">
+
+      <!-- Borboletas voando (CSS puro) -->
+      <div class="borboletas" aria-hidden="true">
+        <span class="bf" style="--top:8%;  --d:7s;   --delay:0s;   --s:34px;"><i>🦋</i></span>
+        <span class="bf" style="--top:30%; --d:9s;   --delay:1.5s; --s:26px;"><i>🦋</i></span>
+        <span class="bf" style="--top:52%; --d:8s;   --delay:3s;   --s:32px;"><i>🦋</i></span>
+        <span class="bf" style="--top:72%; --d:10s;  --delay:.8s;  --s:24px;"><i>🦋</i></span>
+        <span class="bf" style="--top:18%; --d:11s;  --delay:5s;   --s:28px;"><i>🦋</i></span>
+        <span class="bf" style="--top:88%; --d:8.5s; --delay:4s;   --s:30px;"><i>🦋</i></span>
+      </div>
+
+      <h2 class="sobre-titulo" id="sobreTitulo"><small aria-hidden="true">🌸</small>CECÍLIA</h2>
+
+      <ul class="sobre-lista">
+        <li><span class="ico" aria-hidden="true">👗</span> Visto 3 anos</li>
+        <li><span class="ico" aria-hidden="true">🧸</span> Amo Brinquedos!</li>
+      </ul>
+
+      <button type="button" class="fechar" id="fecharSobre">Fechar</button>
+    </div>
+  </dialog>
+
+  <script>
+    // Abre e fecha o pop-up "Sobre mim"
+    (function () {
+      var popup = document.getElementById('popupSobre');
+      var abrir = document.getElementById('abrirSobre');
+      var fechar = document.getElementById('fecharSobre');
+
+      abrir.addEventListener('click', function () {
+        if (typeof popup.showModal === 'function') { popup.showModal(); }
+        else { popup.setAttribute('open', ''); }   // fallback para navegadores antigos
+      });
+
+      fechar.addEventListener('click', function () { popup.close(); });
+
+      // Clicar fora do card (no fundo desfocado) também fecha
+      popup.addEventListener('click', function (e) {
+        if (e.target === popup) { popup.close(); }
+      });
+    })();
+  </script>
+</body>
+</html>
